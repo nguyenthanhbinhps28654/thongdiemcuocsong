@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>buổi 1</title>
+    <style>
+        .demo {
+            position: absolute;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .demo {
+                font-size: 14px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .demo {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+<h1>hehe boy</h1>
+<div id="demo" class="demo">
+    hello world
+</div>
+<div id="demo2" class="demo">
+    hello world
+</div>
+<script>
+    var contents = ['fuck u bitch', 'what the f', 'fuck off', 'dick', 'bitch'];
+    function getRandomColor() {
+        return '#' + Math.floor(Math.random() * 16777215).toString(16);
+    }
+
+    function setRandomStyle(element) {
+        var randomX = Math.floor(Math.random() * (window.innerWidth - element.offsetWidth));
+        var randomY = Math.floor(Math.random() * (window.innerHeight - element.offsetHeight));
+        element.style.left = randomX + 'px';
+        element.style.top = randomY + 'px';
+        element.style.color = getRandomColor();
+        element.style.fontSize = Math.floor(Math.random() * 100) + 'px';
+        element.innerHTML = contents[Math.floor(Math.random() * contents.length)];
+    }
+
+    function chaseMouse(event, element) {
+        var mouseX = event.clientX - element.offsetWidth / 2;
+        var mouseY = event.clientY - element.offsetHeight / 2;
+        element.style.left = mouseX + 'px';
+        element.style.top = mouseY + 'px';
+        element.style.color = getRandomColor();
+        element.style.fontSize = Math.floor(Math.random() * 100) + 'px';
+        element.innerHTML = contents[Math.floor(Math.random() * contents.length)];
+    }
+
+    function init(element) {
+        document.addEventListener('mousemove', function(event) {
+            chaseMouse(event, element);
+        });
+
+        setInterval(function() {
+            setRandomStyle(element);
+        }, 1000);
+    }
+
+    init(document.getElementById('demo'));
+    init(document.getElementById('demo2'));
+
+    
+</script>
+</body>
+</html>
